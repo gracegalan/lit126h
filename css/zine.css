@@ -31,6 +31,7 @@ body {
     height: 100%;
     top: 0;
     left:0;
+    perspective: 1500px;
 }
 
 .front, 
@@ -41,10 +42,15 @@ body {
     height: 100%;
     top: 0;
     left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+
 }
 
 .front {
     z-index: 1;
+    backface-visibility: hidden;
+    border-left: 3px solid #f6d8ec;
 }
 
 .back {
@@ -58,6 +64,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.back-content {
+    transform: rotateY('180deg');
+}
+
+/* Paper flip effect*/
+.flipped .front, 
+.flipped .back {
+    transform: rotateY('-180deg');
 }
 
 /* Controller Buttons*/
@@ -85,7 +101,7 @@ i {
 
 /*Paper stack order*/
 #p1 {
-    z-index: 1;
+    z-index: 3;
 }
 
 #p2 {
@@ -93,7 +109,6 @@ i {
 }
 
 #p3 {
-    z-index: 3;
+    z-index: 1;
 }
-
 
